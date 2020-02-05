@@ -50,14 +50,18 @@ class HandDetect {
         ctx.lineWidth = self.lineWidth;
         while (hands.length > 0) {
           var hand = hands.pop();
-          //flip
-          hand[0] = canvas.width - (hand[0] + hand[2]);
-          ctx.rect(hand[0], hand[1], hand[2], hand[3]);
+          hand[0] = Math.round(hand[0]);
+          hand[1] = Math.round(hand[1]);
+          hand[2] = Math.round(hand[2]);
+          hand[3] = Math.round(hand[3]);
           // process callback
           for (var i = 0; i < self.callbackList.length; i++) {
             self.handInfo = hand;
             self.callbackList[i](hand);
           }
+          //flip
+          hand[0] = canvas.width - (hand[0] + hand[2]);
+          ctx.rect(hand[0], hand[1], hand[2], hand[3]);
         }
         ctx.stroke();
         model.detect(canvas).then(predictions => {
