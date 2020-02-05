@@ -1,0 +1,39 @@
++(async function (window, webduino) {
+  'use strict';
+
+  window.createOrGetVideoEle = function (id, url, width, height) {
+    var videlem = document.getElementById(id);
+    if (videlem == null) {
+      var videlem = document.createElement("video");
+      videlem.id = id;
+      document.body.appendChild(videlem);
+    }
+    var sourceMP4 = document.createElement("source");
+    videlem.appendChild(sourceMP4);
+    sourceMP4.type = "video/mp4";
+    sourceMP4.src = url;
+    videlem.width = width;
+    videlem.height = height;
+    return videlem;
+  }
+
+  window.createCamera = function (camSource, width, height, rotate, flip) {
+    function pageX(elem) {
+      return elem.offsetParent ? elem.offsetLeft + pageX(elem.offsetParent) : elem.offsetLeft;
+    }
+    function pageY(elem) {
+      return elem.offsetParent ? elem.offsetTop + pageY(elem.offsetParent) : elem.offsetTop;
+    }
+    var c1 = document.createElement('canvas');
+    c1.width = width;
+    c1.height = height;
+    document.body.appendChild(c1);
+    var cam = new Camera(camSource);
+    cam.setFlip(flip);
+    cam.setCanvas(c1);
+    if (rotate) {
+      cam.setRotate(90);
+    }
+    return cam;
+  }
+}(window, window.webduino));
