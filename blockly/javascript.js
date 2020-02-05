@@ -23,7 +23,7 @@ Blockly.JavaScript['hands_on_detect'] = function (block) {
   var code = variable_hands + '.on(function(handInfo){\n';
   code += statements_exec;
   code += '});\n';
-  code += variable_hands + '.start();\n';
+  code += variable_hands + '.start(' + number_conf + ');\n';
   return code;
 };
 

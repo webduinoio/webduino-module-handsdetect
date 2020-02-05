@@ -25,7 +25,7 @@ class HandDetect {
     this.callbackList.push(callback);
   }
 
-  start(color, lineWidth) {
+  start(scoreThreshold) {
     //this.strokeStyle = color;
     //this.lineWidth = lineWidth;
     /*
@@ -39,6 +39,7 @@ class HandDetect {
          score: 0.74644153267145157
        }]
      */
+    if (scoreThreshold) this.modelParams.scoreThreshold = scoreThreshold;
     handTrack.load(this.modelParams).then(model => {
       var hands = [];
       var self = this;

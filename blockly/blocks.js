@@ -37,7 +37,7 @@ Blockly.Blocks['hands_on_detect'] = {
     this.appendDummyInput()
         .appendField(new Blockly.FieldVariable("hands"), "hands")
         .appendField("辨識率高於")
-        .appendField(new Blockly.FieldTextInput("0.9"), "conf")
+        .appendField(new Blockly.FieldTextInput("0.7"), "conf")
         .appendField("觸發");
     this.appendStatementInput("exec")
         .setCheck(null)
