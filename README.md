@@ -1,13 +1,6 @@
-# webduino-module-waspot
+# webduino-module-handsdetect
 
-Webduino Module for waspot
-
-
-## Installation
-
-```shell
-bower install https://github.com/webduinoio/webduino-module-face-api.git
-```
+Webduino Module for Hands Detection
 
 ## License
 
